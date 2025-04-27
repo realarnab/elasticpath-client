@@ -1,6 +1,7 @@
 package elasticpath_client.elastic_path;
 
 import java.io.IOException;
+import java.util.Scanner;
 
 import okhttp3.MediaType;
 import okhttp3.OkHttpClient;
@@ -63,15 +64,32 @@ public class CreateCatalog {
 	    }
 
 	    public static void main(String[] args) {
-	        String token = "abd6c5bf0777ec045eb0e4dae03f97f90bffff8f";
+//	        String token = "abd6c5bf0777ec045eb0e4dae03f97f90bffff8f";
+	    	Scanner scanner = new Scanner(System.in);
+
+	        System.out.print("Enter Access Token: ");
+	        String token = scanner.nextLine();
+	        
 	        CreateCatalog creator = new CreateCatalog(token);
+	        
+	        System.out.print("Enter Catalog Name: ");
+	        String name = scanner.nextLine();
+
+	        System.out.print("Enter Catalog Description: ");
+	        String description = scanner.nextLine();
+
+	        System.out.print("Enter Hierarchy ID: ");
+	        String hierarchyId = scanner.nextLine();
+
+	        System.out.print("Enter Pricebook ID: ");
+	        String pricebookId = scanner.nextLine();
 
 	        try {
-	            creator.createACatalog(
-	                    "Europiann Customer catalog",
-	                    "This is a catalog for Europian customer",
-	                    "f18cccc5-24e9-4ee9-978b-0ef96726882c",
-	                    "6e59fa7f-606f-41c8-b974-3e7c34bdf4f0"
+	            creator.createACatalog(name, description, hierarchyId, pricebookId
+//	                    "Europiann Customer catalog",
+//	                    "This is a catalog for Europian customer",
+//	                    "f18cccc5-24e9-4ee9-978b-0ef96726882c",
+//	                    "6e59fa7f-606f-41c8-b974-3e7c34bdf4f0"
 	            );
 	        } catch (IOException e) {
 	            e.printStackTrace();
